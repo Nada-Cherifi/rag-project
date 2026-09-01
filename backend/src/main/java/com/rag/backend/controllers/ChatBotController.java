@@ -22,7 +22,8 @@ public class ChatBotController {
     @PostMapping(
             value = "/stream",
             consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.TEXT_EVENT_STREAM_VALUE
+            produces = MediaType.TEXT_PLAIN_VALUE
+ //           produces = MediaType.TEXT_EVENT_STREAM_VALUE
     )
     public Flux<String> askStream(@RequestBody ChatRequest request) {
         return ragService.askStream(request.message());
