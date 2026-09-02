@@ -1,4 +1,4 @@
-package com.rag.backend.config;
+package com.rag.backend.config.properties;
 
 
 import lombok.Getter;

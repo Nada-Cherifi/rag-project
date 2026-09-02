@@ -1,4 +1,4 @@
-package com.rag.backend.services;
+package com.rag.backend.chatbot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatModel;

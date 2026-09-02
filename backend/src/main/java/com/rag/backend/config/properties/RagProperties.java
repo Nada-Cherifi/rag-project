@@ -1,4 +1,4 @@
-package com.rag.backend.config;
+package com.rag.backend.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +13,7 @@ public class RagProperties {
 
     private Search search = new Search();
     private Splitter splitter = new Splitter();
+    private Memory memory = new Memory();
 
     @Getter
     @Setter
@@ -30,4 +31,11 @@ public class RagProperties {
         private int maxNumChunks;
         private boolean keepSeparator;
     }
+
+    @Getter
+    @Setter
+    public static class Memory {
+        private int maxMessages;
+    }
+
 }
