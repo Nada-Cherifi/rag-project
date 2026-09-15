@@ -1,0 +1,402 @@
+:root {
+  --orange: #f16e00;
+  --ink: #111;
+  --muted: #666;
+}
+
+body,
+.login-pf body {
+  background: #fff !important;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-pf-page,
+.pf-v5-c-login {
+  background: #fff !important;
+}
+
+.pf-v5-c-login__container,
+.pf-c-login__container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#kc-header {
+  display: none !important;
+}
+
+#kc-header-wrapper {
+  height: 76px;
+  padding: 0;
+  font-size: 0;
+  text-transform: none;
+}
+
+#kc-header-wrapper::before {
+  content: "orange";
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 76px;
+  height: 76px;
+  margin: auto;
+  padding: 0 0 9px 8px;
+  box-sizing: border-box;
+  background: var(--orange);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.card-pf,
+.pf-v5-c-login__main,
+.pf-c-login__main {
+  position: relative;
+  overflow: visible !important;
+  border: 0 !important;
+  border-top: 3px solid var(--orange) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+  box-shadow: 0 18px 55px rgb(0 0 0 / 12%) !important;
+}
+
+.card-pf::before,
+.pf-v5-c-login__main::before,
+.pf-c-login__main::before {
+  content: "orange";
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 76px;
+  height: 76px;
+  padding: 0 0 9px 8px;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.card-pf:has(#kc-register-form),
+.pf-v5-c-login__main:has(#kc-register-form),
+.pf-c-login__main:has(#kc-register-form) {
+  width: 420px !important;
+  max-width: calc(100vw - 32px) !important;
+  box-sizing: border-box;
+}
+
+#kc-locale {
+  position: absolute;
+  top: -68px;
+  right: 0;
+  z-index: 3;
+}
+
+.pf-v5-c-login__main-header,
+.pf-c-login__main-header {
+  position: static !important;
+  padding-top: 126px !important;
+}
+
+.pf-v5-c-login__main-header-utilities,
+.pf-c-login__main-header-utilities {
+  position: fixed !important;
+  top: 24px;
+  right: 24px;
+  z-index: 3;
+}
+
+[dir="rtl"] .pf-v5-c-login__main-header-utilities,
+[dir="rtl"] .pf-c-login__main-header-utilities {
+  right: 24px;
+  left: auto;
+}
+
+[dir="rtl"] #kc-locale {
+  right: auto;
+  left: 0;
+}
+
+#kc-page-title,
+.pf-v5-c-title,
+label {
+  color: var(--ink) !important;
+}
+
+input.pf-v5-c-form-control,
+input.pf-c-form-control,
+input.form-control {
+  border-color: #bbb !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+}
+
+#kc-form-login .pf-v5-c-form-control,
+#kc-form-login .pf-c-form-control,
+#kc-register-form .pf-v5-c-form-control,
+#kc-register-form .pf-c-form-control {
+  border: 1px solid #111 !important;
+  background: #fff !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login .pf-v5-c-form-control::before,
+#kc-form-login .pf-v5-c-form-control::after,
+#kc-form-login .pf-c-form-control::before,
+#kc-form-login .pf-c-form-control::after,
+#kc-register-form .pf-v5-c-form-control::before,
+#kc-register-form .pf-v5-c-form-control::after,
+#kc-register-form .pf-c-form-control::before,
+#kc-register-form .pf-c-form-control::after {
+  border: 0 !important;
+}
+
+#kc-form-login .pf-v5-c-form-control:focus-within,
+#kc-form-login .pf-c-form-control:focus-within,
+#kc-register-form .pf-v5-c-form-control:focus-within,
+#kc-register-form .pf-c-form-control:focus-within {
+  border-color: var(--orange) !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login input,
+#kc-form-login input:focus,
+#kc-register-form input,
+#kc-register-form input:focus {
+  border: 0 !important;
+  outline: 0 !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login input:-webkit-autofill,
+#kc-form-login input:-webkit-autofill:hover,
+#kc-form-login input:-webkit-autofill:focus,
+#kc-register-form input:-webkit-autofill,
+#kc-register-form input:-webkit-autofill:hover,
+#kc-register-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink) !important;
+  caret-color: var(--ink) !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  transition: background-color 9999s ease-out 0s;
+}
+
+#kc-form-login .pf-v5-c-input-group__item button,
+#kc-form-login .pf-c-input-group__item button,
+#kc-register-form .pf-v5-c-input-group__item button,
+#kc-register-form .pf-c-input-group__item button {
+  border: 0 !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+#kc-form-login .pf-v5-c-input-group__item:has(button[data-password-toggle]),
+#kc-register-form .pf-v5-c-input-group__item:has(button[data-password-toggle]),
+#kc-form-login .pf-c-input-group__item:has(button[data-password-toggle]),
+#kc-register-form .pf-c-input-group__item:has(button[data-password-toggle]),
+#kc-form-login button[data-password-toggle],
+#kc-register-form button[data-password-toggle] {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login .pf-v5-c-input-group__item:has(button[data-password-toggle])::before,
+#kc-form-login .pf-v5-c-input-group__item:has(button[data-password-toggle])::after,
+#kc-register-form .pf-v5-c-input-group__item:has(button[data-password-toggle])::before,
+#kc-register-form .pf-v5-c-input-group__item:has(button[data-password-toggle])::after,
+#kc-form-login .pf-c-input-group__item:has(button[data-password-toggle])::before,
+#kc-form-login .pf-c-input-group__item:has(button[data-password-toggle])::after,
+#kc-register-form .pf-c-input-group__item:has(button[data-password-toggle])::before,
+#kc-register-form .pf-c-input-group__item:has(button[data-password-toggle])::after,
+#kc-form-login button[data-password-toggle]::before,
+#kc-form-login button[data-password-toggle]::after,
+#kc-register-form button[data-password-toggle]::before,
+#kc-register-form button[data-password-toggle]::after {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login button[data-password-toggle]:hover,
+#kc-form-login button[data-password-toggle]:focus-visible,
+#kc-register-form button[data-password-toggle]:hover,
+#kc-register-form button[data-password-toggle]:focus-visible {
+  color: var(--orange) !important;
+}
+
+#kc-form-login .pf-v5-c-input-group,
+#kc-form-login .pf-c-input-group,
+#kc-register-form .pf-v5-c-input-group,
+#kc-register-form .pf-c-input-group {
+  border: 1px solid #111 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+#kc-form-login .pf-v5-c-input-group:focus-within,
+#kc-form-login .pf-c-input-group:focus-within,
+#kc-register-form .pf-v5-c-input-group:focus-within,
+#kc-register-form .pf-c-input-group:focus-within {
+  border-color: var(--orange) !important;
+}
+
+#kc-form-login .pf-v5-c-input-group .pf-v5-c-form-control,
+#kc-form-login .pf-c-input-group .pf-c-form-control,
+#kc-register-form .pf-v5-c-input-group .pf-v5-c-form-control,
+#kc-register-form .pf-c-input-group .pf-c-form-control {
+  border: 0 !important;
+}
+
+/* Registration fields: username, last name, first name, email, then password. */
+#kc-register-form {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#username) {
+  order: 10;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#lastName) {
+  order: 20;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#firstName) {
+  order: 30;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#email) {
+  order: 40;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#password) {
+  order: 50;
+}
+
+#kc-register-form > .pf-v5-c-form__group:has(#password-confirm) {
+  order: 60;
+}
+
+#kc-register-form > #kc-form-buttons {
+  order: 70;
+}
+
+#kc-register-form > .pf-v5-c-login__main-footer-band,
+#kc-register-form > .pf-c-login__main-footer-band {
+  order: 80;
+  position: fixed !important;
+  top: 24px;
+  right: auto;
+  left: 24px;
+  z-index: 4;
+  width: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#kc-register-form > .pf-v5-c-login__main-footer-band a,
+#kc-register-form > .pf-c-login__main-footer-band a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  background: var(--orange);
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#kc-register-form > .pf-v5-c-login__main-footer-band a::before,
+#kc-register-form > .pf-c-login__main-footer-band a::before {
+  content: "\2190";
+  font-size: 18px;
+  line-height: 1;
+}
+
+#kc-register-form > .pf-v5-c-login__main-footer-band a:hover,
+#kc-register-form > .pf-c-login__main-footer-band a:hover,
+#kc-register-form > .pf-v5-c-login__main-footer-band a:focus-visible,
+#kc-register-form > .pf-c-login__main-footer-band a:focus-visible {
+  background: #d85f00;
+  color: #fff !important;
+}
+
+[dir="rtl"] #kc-register-form > .pf-v5-c-login__main-footer-band,
+[dir="rtl"] #kc-register-form > .pf-c-login__main-footer-band {
+  right: auto;
+  left: 24px;
+}
+
+[dir="rtl"] #kc-register-form > .pf-v5-c-login__main-footer-band a::before,
+[dir="rtl"] #kc-register-form > .pf-c-login__main-footer-band a::before {
+  content: "\2192";
+}
+
+@media (max-width: 640px) {
+  #kc-register-form > .pf-v5-c-login__main-footer-band,
+  #kc-register-form > .pf-c-login__main-footer-band {
+    top: 16px;
+    right: auto;
+    left: 16px;
+  }
+
+  [dir="rtl"] #kc-register-form > .pf-v5-c-login__main-footer-band,
+  [dir="rtl"] #kc-register-form > .pf-c-login__main-footer-band {
+    right: auto;
+    left: 16px;
+  }
+}
+
+#kc-login,
+.pf-v5-c-button.pf-m-primary,
+.pf-c-button.pf-m-primary {
+  border: 0 !important;
+  background: var(--orange) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+#kc-register-form input[type="submit"] {
+  border: 0 !important;
+  background: var(--orange) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+#kc-login:hover,
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-c-button.pf-m-primary:hover,
+#kc-register-form input[type="submit"]:hover,
+#kc-register-form input[type="submit"]:focus-visible {
+  background: #d85f00 !important;
+  color: #fff !important;
+}
+
+a {
+  color: #c85a00 !important;
+}
+
+#kc-info-wrapper {
+  background: #fafafa !important;
+  color: var(--muted) !important;
+}

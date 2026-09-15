@@ -1,0 +1,34 @@
+export type Language = 'fr' | 'en' | 'ar';
+
+export const translations: Record<Language, Record<string, string>> = {
+  fr: {
+    secureConnection: 'Connexion sécurisée…', assistantLabel: 'ASSISTANT ORANGE', welcome: 'Bienvenue sur Assistance Orange',
+    loginIntro: 'Posez vos questions et retrouvez vos conversations en toute sécurité.', login: 'Se connecter', createAccount: 'Créer un compte', firstVisit: 'Première visite ?', registerFree: 'Inscrivez-vous gratuitement →',
+    newConversation: 'Nouvelle conversation', space: 'ESPACE', assistant: 'Assistant', helpPages: 'Pages d’aide', recentConversations: 'CONVERSATIONS RÉCENTES', noConversation: 'Aucune conversation pour le moment.', logout: 'Se déconnecter',
+    helpManagement: 'Gestion des pages d’aide', askTitle: 'Comment puis-je vous aider ?', askIntro: 'Posez une question sur votre Livebox ou vos équipements.', placeholder: 'Posez votre question sur une offre ou un équipement…',
+    resetQuestion: 'Comment réinitialiser ma Livebox 7 ?', resetLabel: 'Réinitialiser ma Livebox 7', lightsQuestion: 'Pourquoi mon voyant internet clignote-t-il ?', lightsLabel: 'Comprendre les voyants', wifiQuestion: 'Comment améliorer la portée de mon Wi-Fi ?', wifiLabel: 'Améliorer mon Wi-Fi',
+    pagesTitle: 'Pages d’aide', pagesIntro: 'Ajoutez les pages Orange que l’assistant pourra consulter pour répondre aux questions.', pagesAvailable: 'pages disponibles', addPage: 'Ajouter une nouvelle page', pageAddress: 'Adresse de la page Orange', adding: 'Ajout…', add: 'Ajouter', acceptedSites: 'Sites acceptés', acceptedSitesText: 'Vous pouvez ajouter des pages provenant de', latestPages: 'Dernières pages ajoutées', page: 'page', pages: 'pages', noPage: 'Aucune page ajoutée', firstPage: 'Ajoutez votre première page avec le formulaire ci-dessus.', addedOn: 'Ajoutée le', storedParts: 'parties enregistrées', available: 'Disponible', pageAdded: 'Page ajoutée avec succès.',
+    deleteTitle: 'Supprimer la conversation ?', deleteText: 'sera définitivement supprimée.', deletePageTitle: 'Supprimer cette page ?', deletePageText: 'Tous les contenus indexés de cette adresse seront supprimés.', cancel: 'Annuler', delete: 'Supprimer', assistantName: 'Assistant Orange',
+    createError: 'Impossible de créer une conversation. Vérifiez le service.', historyError: 'Impossible de charger cet historique.', deleteError: 'Impossible de supprimer cette conversation.', sourceDeleteError: 'Impossible de supprimer cette page.', chatError: 'Le chatbot ne peut pas répondre pour le moment.', pageError: 'Cette page n’a pas pu être ajoutée. Utilisez une page assistance.orange.fr.'
+  },
+  en: {
+    secureConnection: 'Secure connection…', assistantLabel: 'ORANGE ASSISTANT', welcome: 'Welcome to Orange Assistance',
+    loginIntro: 'Ask your questions and access your conversations securely.', login: 'Sign in', createAccount: 'Create an account', firstVisit: 'First visit?', registerFree: 'Register for free →',
+    newConversation: 'New conversation', space: 'SPACE', assistant: 'Assistant', helpPages: 'Help pages', recentConversations: 'RECENT CONVERSATIONS', noConversation: 'No conversations yet.', logout: 'Sign out',
+    helpManagement: 'Help page management', askTitle: 'How can I help you?', askIntro: 'Ask a question about your Livebox or equipment.', placeholder: 'Ask your question about an offer or device…',
+    resetQuestion: 'How do I reset my Livebox 7?', resetLabel: 'Reset my Livebox 7', lightsQuestion: 'Why is my internet light blinking?', lightsLabel: 'Understand the lights', wifiQuestion: 'How can I improve my Wi-Fi range?', wifiLabel: 'Improve my Wi-Fi',
+    pagesTitle: 'Help pages', pagesIntro: 'Add Orange pages the assistant can use to answer questions.', pagesAvailable: 'pages available', addPage: 'Add a new page', pageAddress: 'Orange page address', adding: 'Adding…', add: 'Add', acceptedSites: 'Accepted sites', acceptedSitesText: 'You can add pages from', latestPages: 'Recently added pages', page: 'page', pages: 'pages', noPage: 'No pages added', firstPage: 'Add your first page using the form above.', addedOn: 'Added on', storedParts: 'saved sections', available: 'Available', pageAdded: 'Page added successfully.',
+    deleteTitle: 'Delete this conversation?', deleteText: 'will be permanently deleted.', deletePageTitle: 'Delete this page?', deletePageText: 'All indexed content from this address will be deleted.', cancel: 'Cancel', delete: 'Delete', assistantName: 'Orange Assistant',
+    createError: 'Unable to create a conversation. Check the service.', historyError: 'Unable to load this conversation.', deleteError: 'Unable to delete this conversation.', sourceDeleteError: 'Unable to delete this page.', chatError: 'The assistant cannot answer right now.', pageError: 'This page could not be added. Use an assistance.orange.fr page.'
+  },
+  ar: {
+    secureConnection: 'اتصال آمن…', assistantLabel: 'مساعد أورنج', welcome: 'مرحباً بك في مساعدة أورنج',
+    loginIntro: 'اطرح أسئلتك واطّلع على محادثاتك بأمان.', login: 'تسجيل الدخول', createAccount: 'إنشاء حساب', firstVisit: 'أول زيارة؟', registerFree: 'سجّل مجاناً ←',
+    newConversation: 'محادثة جديدة', space: 'المساحة', assistant: 'المساعد', helpPages: 'صفحات المساعدة', recentConversations: 'المحادثات الأخيرة', noConversation: 'لا توجد محادثات حتى الآن.', logout: 'تسجيل الخروج',
+    helpManagement: 'إدارة صفحات المساعدة', askTitle: 'كيف يمكنني مساعدتك؟', askIntro: 'اطرح سؤالاً حول جهاز Livebox أو تجهيزاتك.', placeholder: 'اكتب سؤالك حول عرض أو جهاز…',
+    resetQuestion: 'كيف أعيد ضبط Livebox 7؟', resetLabel: 'إعادة ضبط Livebox 7', lightsQuestion: 'لماذا يومض ضوء الإنترنت؟', lightsLabel: 'فهم أضواء الجهاز', wifiQuestion: 'كيف أحسّن مدى شبكة Wi-Fi؟', wifiLabel: 'تحسين شبكة Wi-Fi',
+    pagesTitle: 'صفحات المساعدة', pagesIntro: 'أضف صفحات أورنج التي يمكن للمساعد استخدامها للإجابة.', pagesAvailable: 'صفحات متاحة', addPage: 'إضافة صفحة جديدة', pageAddress: 'عنوان صفحة أورنج', adding: 'جارٍ الإضافة…', add: 'إضافة', acceptedSites: 'المواقع المقبولة', acceptedSitesText: 'يمكنك إضافة صفحات من', latestPages: 'آخر الصفحات المضافة', page: 'صفحة', pages: 'صفحات', noPage: 'لم تتم إضافة أي صفحة', firstPage: 'أضف صفحتك الأولى باستعمال النموذج أعلاه.', addedOn: 'أضيفت في', storedParts: 'أجزاء محفوظة', available: 'متاحة', pageAdded: 'تمت إضافة الصفحة بنجاح.',
+    deleteTitle: 'حذف المحادثة؟', deleteText: 'سيتم حذفها نهائياً.', deletePageTitle: 'حذف هذه الصفحة؟', deletePageText: 'سيتم حذف جميع المحتويات المفهرسة لهذا العنوان.', cancel: 'إلغاء', delete: 'حذف', assistantName: 'مساعد أورنج',
+    createError: 'تعذر إنشاء المحادثة. تحقق من الخدمة.', historyError: 'تعذر تحميل هذه المحادثة.', deleteError: 'تعذر حذف هذه المحادثة.', sourceDeleteError: 'تعذر حذف هذه الصفحة.', chatError: 'لا يستطيع المساعد الإجابة الآن.', pageError: 'تعذرت إضافة الصفحة. استخدم صفحة من assistance.orange.fr.'
+  }
+};

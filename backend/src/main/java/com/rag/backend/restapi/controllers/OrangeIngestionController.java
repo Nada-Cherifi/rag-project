@@ -1,10 +1,14 @@
 package com.rag.backend.restapi.controllers;
 
 import com.rag.backend.services.OrangeIngestionService;
+import com.rag.backend.restapi.dto.IndexedSourceResponse;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +37,21 @@ public class OrangeIngestionController {
                 "url", url,
                 "chunks", chunks,
                 "status", "INGESTED"
+        );
+    }
+
+    @GetMapping("/sources")
+    public List<IndexedSourceResponse> listSources() {
+        return ingestionService.listSources();
+    }
+
+    @DeleteMapping("/orange")
+    public Map<String, Object> delete(@RequestParam String url) {
+        int deletedChunks = ingestionService.deleteSource(url);
+        return Map.of(
+                "url", url,
+                "deletedChunks", deletedChunks,
+                "status", "DELETED"
         );
     }
 }

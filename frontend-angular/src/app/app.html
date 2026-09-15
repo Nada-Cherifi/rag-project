@@ -1,0 +1,90 @@
+@if (!auth.ready()) {
+  <main class="auth-state"><div class="logo"><span>orange</span></div><span class="spinner"></span><p>{{ t('secureConnection') }}</p></main>
+} @else if (!auth.authenticated()) {
+  <main class="auth-state login-page">
+    <section class="login-card">
+      <div class="logo"><span>orange</span></div>
+      <div class="language-picker login-language-picker">
+        <label for="login-language">Langue</label>
+        <select id="login-language" [value]="language()" (change)="changeLanguage($event)">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      <h1>{{ t('welcome') }}</h1>
+      <div class="login-actions">
+        <button class="primary" (click)="auth.login(language())">{{ t('login') }}</button>
+        <button class="register-button" (click)="auth.register(language())">{{ t('createAccount') }}</button>
+      </div>
+      <div class="signup-bar"><span>{{ t('firstVisit') }}</span><button (click)="auth.register(language())">{{ t('registerFree') }}</button></div>
+    </section>
+  </main>
+} @else {
+  <div class="app-shell">
+    <div class="scrim" [class.visible]="sidebarOpen()" (click)="sidebarOpen.set(false)"></div>
+    <aside class="sidebar" [class.open]="sidebarOpen()">
+      <header class="brand"><div class="logo"><span>orange</span></div><div><strong>Assistance Orange</strong></div><button class="mobile-close" (click)="sidebarOpen.set(false)">×</button></header>
+      <button class="new-chat" (click)="newConversation()"><span>＋</span> {{ t('newConversation') }}</button>
+      <nav>
+        <p class="nav-label">{{ t('space') }}</p>
+        <button [class.active]="view() === 'chat'" (click)="setView('chat')"><span>◫</span>{{ auth.isAdmin() ? 'TEST' : t('assistant') }}</button>
+        @if (auth.isAdmin()) { <button [class.active]="view() === 'sources'" (click)="setView('sources')"><span>↗</span>{{ t('helpPages') }}</button> }
+      </nav>
+      <section class="history">
+        <p class="nav-label">{{ t('recentConversations') }}</p>
+        @if (conversations().length === 0) { <p class="empty">{{ t('noConversation') }}</p> }
+        @for (conversation of conversations(); track conversation.id) {
+          <div class="history-row" [class.active]="activeConversation()?.id === conversation.id"><button (click)="openConversation(conversation)"><span>◌</span><span>{{ conversation.title || t('newConversation') }}</span></button><button class="delete-chat" type="button" [title]="t('delete')" [attr.aria-label]="t('delete')" (click)="$event.stopPropagation(); conversationToDelete.set(conversation)">×</button></div>
+        }
+      </section>
+      <footer><div class="avatar">{{ initials() }}</div><div><strong>{{ auth.displayName }}</strong></div><button class="logout-button" type="button" (click)="auth.logout()" [attr.aria-label]="t('logout')">{{ t('logout') }}</button></footer>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar"><button class="menu" (click)="sidebarOpen.set(true)">☰</button><div><span class="online"></span>{{ view() === 'sources' ? t('helpManagement') : t('assistantName') }}</div><div class="language-picker compact"><label for="app-language">Langue</label><select id="app-language" [value]="language()" (change)="changeLanguage($event)"><option value="fr">Français</option><option value="en">English</option><option value="ar">العربية</option></select></div></header>
+
+      @if (error()) { <div class="alert error"><span>{{ error() }}</span><button (click)="error.set('')">×</button></div> }
+
+      @if (view() === 'sources' && auth.isAdmin()) {
+        <section class="admin-page">
+          <div class="page-heading"><div><h1>{{ t('pagesTitle') }}</h1></div></div>
+          <div class="source-grid">
+            <article class="add-card"><div class="card-icon">↗</div><h2>{{ t('addPage') }}</h2><form (ngSubmit)="addSource()"><div class="url-control"><input id="url" name="url" type="url" [(ngModel)]="sourceUrl" [attr.aria-label]="t('pageAddress')" placeholder="https://assistance.orange.fr/..." required><button class="primary" [disabled]="ingesting()">{{ ingesting() ? t('adding') : t('add') }}</button></div></form>@if (ingestionSuccess()) { <div class="success">✓ {{ ingestionSuccess() }}</div> }</article>
+          </div>
+          <section class="source-list"><div class="section-title"><h2>{{ t('latestPages') }}</h2><span>{{ sources().length }} {{ sources().length > 1 ? t('pages') : t('page') }}</span></div>
+            @if (sources().length === 0) { <div class="empty-table"><div>□</div><strong>{{ t('noPage') }}</strong><p>{{ t('firstPage') }}</p></div> }
+            @for (source of sources(); track source.url) { <article class="source-row"><div class="doc-icon">▤</div><div><strong>{{ source.url }}</strong><span>{{ t('addedOn') }} {{ source.indexedAt | date:'dd/MM/yyyy HH:mm' }}</span></div><b>{{ source.chunks }} {{ t('storedParts') }}</b><span class="status">{{ t('available') }}</span><button class="delete-source" type="button" (click)="sourceToDelete.set(source)">{{ t('delete') }}</button></article> }
+          </section>
+        </section>
+      } @else {
+        <section class="chat-page">
+          @if (messages().length === 0) {
+            <div class="welcome"><div class="spark">✦</div><p class="eyebrow">{{ t('assistantLabel') }}</p><h1>{{ t('askTitle') }}</h1><p>{{ t('askIntro') }}</p></div>
+          } @else {
+            <div class="messages">@for (message of messages(); track message.id) { <article class="message" [class.assistant]="message.role === 'ASSISTANT'"><div class="message-avatar">{{ message.role === 'ASSISTANT' ? 'orange' : initials() }}</div><div><header><strong>{{ message.role === 'ASSISTANT' ? t('assistantName') : auth.displayName }}</strong></header>@if (message.content) { <div class="answer" [innerHTML]="formatAnswer(message.content)"></div> } @else { <p>●  ●  ●</p> }</div></article> }</div>
+          }
+          <div class="composer-wrap"><div class="composer"><textarea [(ngModel)]="question" (keydown)="onComposerKeydown($event)" rows="1" [placeholder]="t('placeholder')"></textarea><button (click)="sendQuestion()" [disabled]="!question.trim() || sending()">{{ sending() ? '…' : '↑' }}</button></div></div>
+        </section>
+      }
+    </main>
+  </div>
+  @if (conversationToDelete(); as conversation) {
+    <div class="modal-backdrop" (click)="conversationToDelete.set(null)">
+      <section class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="delete-title" (click)="$event.stopPropagation()">
+        <div class="modal-icon">×</div><h2 id="delete-title">{{ t('deleteTitle') }}</h2>
+        <p>« {{ conversation.title || t('newConversation') }} » {{ t('deleteText') }}</p>
+        <div><button type="button" class="cancel-button" (click)="conversationToDelete.set(null)">{{ t('cancel') }}</button><button type="button" class="delete-button" (click)="confirmConversationDeletion()">{{ t('delete') }}</button></div>
+      </section>
+    </div>
+  }
+  @if (sourceToDelete(); as source) {
+    <div class="modal-backdrop" (click)="sourceToDelete.set(null)">
+      <section class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="source-delete-title" (click)="$event.stopPropagation()">
+        <div class="modal-icon">×</div><h2 id="source-delete-title">{{ t('deletePageTitle') }}</h2>
+        <p>{{ t('deletePageText') }}<br>« {{ source.url }} »</p>
+        <div><button type="button" class="cancel-button" (click)="sourceToDelete.set(null)">{{ t('cancel') }}</button><button type="button" class="delete-button" (click)="confirmSourceDeletion()">{{ t('delete') }}</button></div>
+      </section>
+    </div>
+  }
+}

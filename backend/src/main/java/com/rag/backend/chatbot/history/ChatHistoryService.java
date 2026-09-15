@@ -104,6 +104,13 @@ public class ChatHistoryService {
         );
     }
 
+    @Transactional
+    public void deleteConversation(UUID conversationId) {
+        requireConversation(conversationId);
+        chatMessageRepository.deleteByConversationId(conversationId);
+        conversationRepository.deleteById(conversationId);
+    }
+
     private Conversation requireConversation(UUID conversationId) {
         return conversationRepository
                 .findById(conversationId)

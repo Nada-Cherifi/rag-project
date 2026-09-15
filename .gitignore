@@ -82,6 +82,8 @@ logs/
 *.swp
 *.swo
 *~
+.m2-check/
+*.lnk
 
 # =========================
 # Node / Angular (pour plus tard)
